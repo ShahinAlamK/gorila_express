@@ -19,7 +19,7 @@ class _ServerScreenState extends State<ServerScreen> {
       appBar: AppBar(
         elevation: 0,
         titleSpacing: 0,
-        title: Text("Servers"),
+        title: const Text("Servers"),
       ),
 
       body: Padding(
@@ -33,40 +33,38 @@ class _ServerScreenState extends State<ServerScreen> {
               decoration: InputDecoration(
                 hintText: "Search location",
                 border: InputBorder.none,
-                contentPadding: EdgeInsets.symmetric(horizontal: 10,vertical: 4),
+                contentPadding: EdgeInsets.symmetric(horizontal: getW(15),vertical: getH(16)),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
-                  borderSide: BorderSide(color: Colors.transparent)
+                  borderSide: const BorderSide(color: Colors.transparent)
                 ),
-                focusedBorder: OutlineInputBorder(
+                errorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Colors.transparent)
+                    borderSide: const BorderSide(color: Colors.transparent)
                 ),
-                prefixIcon: Icon(Icons.search,size: 30,color:theme.iconTheme.color,),
+                prefixIcon: Icon(Icons.search,size: getW(45),color:theme.iconTheme.color,),
                 filled: true,
                 fillColor: theme.colorScheme.secondary,
               ),
             ),
 
 
-            SizedBox(height: 20),
+            SizedBox(height: getH(25)),
 
             Expanded(
               child: ListView.builder(
-                padding: EdgeInsets.only(top: 5),
                 itemCount: 10,
                   itemBuilder: (_,index){
                 return Padding(
                   padding: const EdgeInsets.only(bottom: 15),
                   child: ServerCard(
-                    leading: CircleAvatar(radius: 20,backgroundColor:Colors.orange,),
+                    leading: const CircleAvatar(radius: 20,backgroundColor:Colors.orange,),
                     title:  Text("Singapore",style:theme.textTheme.bodyMedium),
                     trailing: Row(
                       children: [
                         Image.asset("assets/image/signal.png",height: 20,color: Colors.green,),
-                        SizedBox(width:7),
+                        SizedBox(width:getW(15)),
                         Text("100 ms",style:theme.textTheme.bodySmall),
-
                       ],
                     ),
                     onTap: () { },),

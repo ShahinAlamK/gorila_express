@@ -31,9 +31,9 @@ class ThemeStyle{
     ),
 
       textTheme:TextTheme(
-      bodySmall:AppStyle.small.copyWith(fontSize: AppSize.horizontal!*3,color:Colors.blueGrey.shade800),
-      bodyMedium:AppStyle.medium.copyWith(fontSize: AppSize.horizontal!*4.5,color:Colors.blueGrey.shade800),
-      bodyLarge:AppStyle.large.copyWith(fontSize: AppSize.horizontal!*5,color:Colors.blueGrey.shade800),
+      bodySmall:AppStyle.small.copyWith(fontSize:getW(20),color:Colors.blueGrey.shade800),
+      bodyMedium:AppStyle.medium.copyWith(fontSize: getW(25),color:Colors.blueGrey.shade800),
+      bodyLarge:AppStyle.large.copyWith(fontSize: getW(30),color:Colors.blueGrey.shade800),
     ),
 
       listTileTheme: ListTileThemeData(
@@ -85,9 +85,9 @@ class ThemeStyle{
       ),
 
     textTheme:TextTheme(
-      bodySmall:AppStyle.small.copyWith(fontSize: AppSize.horizontal!*3,color:Colors.grey.shade50),
-      bodyMedium:AppStyle.medium.copyWith(fontSize: AppSize.horizontal!*4.5,color:Colors.grey.shade50),
-      bodyLarge:AppStyle.large.copyWith(fontSize: AppSize.horizontal!*5,color:Colors.grey.shade50),
+      bodySmall:AppStyle.small.copyWith(fontSize:getW(20),color:Colors.grey.shade50),
+      bodyMedium:AppStyle.medium.copyWith(fontSize:getW(25),color:Colors.grey.shade50),
+      bodyLarge:AppStyle.large.copyWith(fontSize: getW(30),color:Colors.grey.shade50),
     ),
 
       listTileTheme: ListTileThemeData(

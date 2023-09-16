@@ -14,3 +14,13 @@ class AppSize{
     vertical=height!/100;
   }
 }
+
+double getH(double height){
+  double screenHeight=AppSize.height!;
+  return (height/640)*screenHeight;
+}
+
+double getW(double width){
+  double screenWidth=AppSize.width!;
+  return (width/640)*screenWidth;
+}

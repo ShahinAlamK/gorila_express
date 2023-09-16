@@ -87,65 +87,71 @@ class _HomeScreenState extends State<HomeScreen> {
         drawer: const CustomDrawer(),
 
         body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
-          child: Column(
-            children: [
-              SizedBox(height: AppSize.vertical!*6),
+          padding: EdgeInsets.symmetric(horizontal:getW(20)),
+          child: SingleChildScrollView(
+            physics:const BouncingScrollPhysics(),
+            child: Column(
+              children: [
+                SizedBox(height:getH(30)),
 
-              statusWidget(theme),
-              SizedBox(height: AppSize.vertical!*5),
+                statusWidget(theme),
+                SizedBox(height: getH(30)),
 
-              RotatedBox(
-                quarterTurns:1,
-                child: SizedBox(
-                  width:AppSize.vertical!*20,
-                  child: FittedBox(
-                    fit: BoxFit.fill,
-                    child: Switch(
-                      activeColor: Colors.white,
-                        activeTrackColor: Colors.green,
-                        inactiveThumbColor: Colors.white,
-                        inactiveTrackColor:Colors.blueGrey.shade500,
-                        value: isActive,
-                        onChanged: (value){
-                      setState(() {
-                        isActive=value;
-                        isActive?startTimer() : stopTimer();
-                      });
-                    }),
+                RotatedBox(
+                  quarterTurns:1,
+                  child: SizedBox(
+                    width:getW(250),
+                    child: FittedBox(
+                      fit: BoxFit.fill,
+                      child: Switch(
+                        activeColor: Colors.white,
+                          activeTrackColor: Colors.green,
+                          inactiveThumbColor: Colors.white,
+                          inactiveTrackColor:Colors.blueGrey.shade500,
+                          value: isActive,
+                          onChanged: (value){
+                        setState(() {
+                          isActive=value;
+                          isActive?startTimer() : stopTimer();
+                        });
+                      }),
+                    ),
                   ),
                 ),
-              ),
-              const Spacer(),
 
-              uploadDownload(theme),
-              SizedBox(height: AppSize.vertical!*7),
-              
-              Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text("Select server",style: theme.textTheme.bodySmall,)),
-              const SizedBox(height:10),
-              ServerCard(
-                leading: const CircleAvatar(
-                  radius:18,
-                  backgroundImage:NetworkImage("https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/United-states_flag_icon_round.svg/2048px-United-states_flag_icon_round.svg.png"),
-                  backgroundColor:Colors.orange,
+                SizedBox(height: getH(40)),
+
+                uploadDownload(theme),
+                SizedBox(height: getH(30)),
+
+                Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text("Select server",style: theme.textTheme.bodyMedium,)),
+
+                SizedBox(height:getH(10)),
+
+                ServerCard(
+                  leading: CircleAvatar(
+                    radius:getW(30),
+                    backgroundImage:const NetworkImage("https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/United-states_flag_icon_round.svg/2048px-United-states_flag_icon_round.svg.png"),
+                    backgroundColor:Colors.orange,
+                  ),
+
+                  title: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("United states",style: theme.textTheme.bodyLarge!.copyWith(fontSize:AppSize.horizontal!*4),),
+                      Text("toronto",style: theme.textTheme.bodySmall),
+                    ],
+                  ),
+                  trailing: const Icon(Icons.arrow_forward_ios_outlined),
+                  onTap: (){Navigator.push(context,MaterialPageRoute(builder: (_)=>const ServerScreen()));},
                 ),
 
-                title: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("United states",style: theme.textTheme.bodyLarge!.copyWith(fontSize:AppSize.horizontal!*4),),
-                    Text("toronto",style: theme.textTheme.bodySmall),
-                  ],
-                ),
-                trailing: const Icon(Icons.arrow_forward_ios_outlined),
+                SizedBox(height: getH(10)),
 
-                onTap: (){Navigator.push(context,MaterialPageRoute(builder: (_)=>ServerScreen()));},
-              ),
-              SizedBox(height: AppSize.vertical!*5),
-
-            ],
+              ],
+            ),
           ),
         ),
       ),
@@ -163,11 +169,11 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Column(
               children: [
                 Text(connect(),
-                  style:theme.textTheme.bodyLarge!.copyWith(fontSize: AppSize.horizontal!*6,color:Colors.green),),
+                  style:theme.textTheme.bodyLarge!.copyWith(fontSize: getW(40),color:Colors.green),),
                 SizedBox(height: AppSize.vertical!*1),
 
                 Text( '$hours : $minutes : $seconds',
-                  style:theme.textTheme.bodySmall!.copyWith(fontSize: AppSize.horizontal!*4),),
+                  style:theme.textTheme.bodySmall!.copyWith(fontSize: getW(22)),),
               ],
             )
     );
@@ -175,7 +181,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   uploadDownload(ThemeData theme){
     return Container(
-      width: AppSize.width,
+      width: double.infinity,
       decoration: BoxDecoration(
           color:theme.colorScheme.secondary,
           borderRadius: BorderRadius.circular(10)
