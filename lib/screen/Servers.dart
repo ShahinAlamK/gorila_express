@@ -26,7 +26,7 @@ class _ServerScreenState extends State<ServerScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Column(
           children: [
-            SizedBox(height: AppSize.vertical!*2.5),
+            SizedBox(height:getH(10)),
 
             TextField(
               style:theme.textTheme.bodyMedium,
@@ -38,7 +38,7 @@ class _ServerScreenState extends State<ServerScreen> {
                   borderRadius: BorderRadius.circular(10),
                   borderSide: const BorderSide(color: Colors.transparent)
                 ),
-                errorBorder: OutlineInputBorder(
+                focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                     borderSide: const BorderSide(color: Colors.transparent)
                 ),
@@ -49,7 +49,7 @@ class _ServerScreenState extends State<ServerScreen> {
             ),
 
 
-            SizedBox(height: getH(25)),
+            SizedBox(height: getH(20)),
 
             Expanded(
               child: ListView.builder(
